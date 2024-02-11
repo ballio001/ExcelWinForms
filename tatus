@@ -1,0 +1,103 @@
+warning: in the working copy of 'Form1.Designer.cs', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'Form1.cs', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'obj/Debug/net5.0-windows/ExcelWinForm.csproj.CoreCompileInputs.cache', CRLF will be replaced by LF the next time Git touches it
+[1mdiff --git a/Form1.Designer.cs b/Form1.Designer.cs[m
+[1mindex 1022bb1..4b29fa5 100644[m
+[1m--- a/Form1.Designer.cs[m
+[1m+++ b/Form1.Designer.cs[m
+[36m@@ -45,13 +45,13 @@[m [mnamespace ExcelWinForm[m
+             // [m
+             // CmdWrite[m
+             // [m
+[31m-            //this.CmdWrite.Location = new System.Drawing.Point(102, 34);[m
+[31m-            //this.CmdWrite.Name = "CmdWrite";[m
+[31m-            //this.CmdWrite.Size = new System.Drawing.Size(75, 23);[m
+[31m-            //this.CmdWrite.TabIndex = 1;[m
+[31m-            //this.CmdWrite.Text = "Write";[m
+[31m-            //this.CmdWrite.UseVisualStyleBackColor = true;[m
+[31m-            //this.CmdWrite.Click += new System.EventHandler(this.CmdWrite_Click);[m
+[32m+[m[32m            this.CmdWrite.Location = new System.Drawing.Point(102, 34);[m
+[32m+[m[32m            this.CmdWrite.Name = "CmdWrite";[m
+[32m+[m[32m            this.CmdWrite.Size = new System.Drawing.Size(75, 23);[m
+[32m+[m[32m            this.CmdWrite.TabIndex = 1;[m
+[32m+[m[32m            this.CmdWrite.Text = "Write";[m
+[32m+[m[32m            this.CmdWrite.UseVisualStyleBackColor = true;[m
+[32m+[m[32m            this.CmdWrite.Click += new System.EventHandler(this.CmdWrite_Click);[m
+             // [m
+             // Form1[m
+             // [m
+[1mdiff --git a/Form1.cs b/Form1.cs[m
+[1mindex aaf8dac..7d02d4e 100644[m
+[1m--- a/Form1.cs[m
+[1m+++ b/Form1.cs[m
+[36m@@ -1,5 +1,6 @@[m
+ ﻿using System;[m
+ using System.Windows.Forms;[m
+[32m+[m[32musing ExcelWinForm.Excel;[m
+ using Microsoft.Office.Interop.Excel;[m
+ [m
+ namespace ExcelWinForm[m
+[36m@@ -13,33 +14,12 @@[m [mnamespace ExcelWinForm[m
+ [m
+         private void CmdRead_Click(object sender, EventArgs e)[m
+         {[m
+[31m-            readExcel();[m
+[32m+[m[32m            ReadExcel.readExcel();[m
+         }[m
+ [m
+[31m-        private void readExcel()[m
+[31m-        {[m
+[31m-            string filePath = "C:\\Users\\Onur\\source\\repos\\ExcelWinForm\\ExcelWinForm\\TestExcel.xlsx";[m
+[31m-            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();[m
+[31m-[m
+[31m-            //var to hold the objects[m
+[31m-            Workbook wb;[m
+[31m-            Worksheet ws;[m
+[31m-[m
+[31m-            //opens workbook and stores in wb, same with sheet[m
+[31m-            wb = excel.Workbooks.Open(filePath);[m
+[31m-            ws = wb.Worksheets[1];[m
+[31m-[m
+[31m-            //iterates through the given range values in Excel[m
+[31m-            Microsoft.Office.Interop.Excel.Range cell = ws.Range["A1:B1"];[m
+[31m-            foreach(string Result in cell.Value)[m
+[31m-            {[m
+[31m-                MessageBox.Show(Result);[m
+[31m-            }[m
+[31m-        }[m
+[31m-        /*[m
+         private void CmdWrite_Click(object sender, EventArgs e)[m
+         {[m
+             WriteExcel.writeExcel();[m
+[31m-        }*/[m
+[32m+[m[32m        }[m
+     }[m
+ }[m
+[1mdiff --git a/bin/Debug/net5.0-windows/ExcelWinForm.dll b/bin/Debug/net5.0-windows/ExcelWinForm.dll[m
+[1mindex 622b4cd..0be7118 100644[m
+Binary files a/bin/Debug/net5.0-windows/ExcelWinForm.dll and b/bin/Debug/net5.0-windows/ExcelWinForm.dll differ
+[1mdiff --git a/bin/Debug/net5.0-windows/ExcelWinForm.pdb b/bin/Debug/net5.0-windows/ExcelWinForm.pdb[m
+[1mindex 0a4d10b..81bc896 100644[m
+Binary files a/bin/Debug/net5.0-windows/ExcelWinForm.pdb and b/bin/Debug/net5.0-windows/ExcelWinForm.pdb differ
+[1mdiff --git a/bin/Debug/net5.0-windows/ref/ExcelWinForm.dll b/bin/Debug/net5.0-windows/ref/ExcelWinForm.dll[m
+[1mindex c95db5b..c7b5c83 100644[m
+Binary files a/bin/Debug/net5.0-windows/ref/ExcelWinForm.dll and b/bin/Debug/net5.0-windows/ref/ExcelWinForm.dll differ
+[1mdiff --git a/obj/Debug/net5.0-windows/ExcelWinForm.csproj.CoreCompileInputs.cache b/obj/Debug/net5.0-windows/ExcelWinForm.csproj.CoreCompileInputs.cache[m
+[1mindex 56c48b4..64c7ecd 100644[m
+[1m--- a/obj/Debug/net5.0-windows/ExcelWinForm.csproj.CoreCompileInputs.cache[m
+[1m+++ b/obj/Debug/net5.0-windows/ExcelWinForm.csproj.CoreCompileInputs.cache[m
+[36m@@ -1 +1 @@[m
+[31m-fce37de3aa04b49caea84ef7b030d9d87ebded31[m
+[32m+[m[32m05dc6d53aad95a63d902dad47d086d361d7b3d72[m
+[1mdiff --git a/obj/Debug/net5.0-windows/ExcelWinForm.csproj.GenerateResource.cache b/obj/Debug/net5.0-windows/ExcelWinForm.csproj.GenerateResource.cache[m
+[1mindex a8d248b..5cef516 100644[m
+Binary files a/obj/Debug/net5.0-windows/ExcelWinForm.csproj.GenerateResource.cache and b/obj/Debug/net5.0-windows/ExcelWinForm.csproj.GenerateResource.cache differ
+[1mdiff --git a/obj/Debug/net5.0-windows/ExcelWinForm.dll b/obj/Debug/net5.0-windows/ExcelWinForm.dll[m
+[1mindex 622b4cd..0be7118 100644[m
+Binary files a/obj/Debug/net5.0-windows/ExcelWinForm.dll and b/obj/Debug/net5.0-windows/ExcelWinForm.dll differ
+[1mdiff --git a/obj/Debug/net5.0-windows/ExcelWinForm.pdb b/obj/Debug/net5.0-windows/ExcelWinForm.pdb[m
+[1mindex 0a4d10b..81bc896 100644[m
+Binary files a/obj/Debug/net5.0-windows/ExcelWinForm.pdb and b/obj/Debug/net5.0-windows/ExcelWinForm.pdb differ
+[1mdiff --git a/obj/Debug/net5.0-windows/ref/ExcelWinForm.dll b/obj/Debug/net5.0-windows/ref/ExcelWinForm.dll[m
+[1mindex c95db5b..c7b5c83 100644[m
+Binary files a/obj/Debug/net5.0-windows/ref/ExcelWinForm.dll and b/obj/Debug/net5.0-windows/ref/ExcelWinForm.dll differ

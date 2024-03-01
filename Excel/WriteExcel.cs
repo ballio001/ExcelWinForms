@@ -6,17 +6,13 @@ namespace ExcelWinForm.Excel
 {
     class WriteExcel
     {
-        public static void WriteExcelData(string[,] data)
+        public static void WriteExcelData(string[,] data, string filePath)
         {
-            //filepath to the location of the Excel
-            string filePath = Files.OriginalFilePath;
-            string filePathEdited = Files.EditedFilePath;
-
             Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
 
             //var to hold the objects
-            Workbook wb = excel.Workbooks.Open(filePath);
-            Worksheet ws = wb.Worksheets[1];
+            Workbook wb = excel.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
+            Worksheet ws = (Worksheet)wb.Worksheets[1];
 
             try
             {
@@ -24,17 +20,20 @@ namespace ExcelWinForm.Excel
                 int rowCount = data.GetLength(0);
                 int colCount = data.GetLength(1);
 
-                // Get the range to write the data
-                Microsoft.Office.Interop.Excel.Range range = ws.Range[ws.Cells[1, 1], ws.Cells[rowCount, colCount]];
+                // Write data to the worksheet
+                for (int i = 1; i <= rowCount; i++)
+                {
+                    for (int j = 1; j <= colCount; j++)
+                    {
+                        ws.Cells[i, j] = data[i - 1, j - 1];
+                    }
+                }
 
-                // Write the data to the range
-                range.Value = data;
-
-                // Save the workbook and close Excel
-                wb.SaveAs(filePathEdited);
+                // Save the workbook
+                wb.SaveAs(filePath);
                 wb.Close();
 
-                MessageBox.Show("Data has been written to: " + filePathEdited, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Data has been written to: " + filePath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -45,8 +44,6 @@ namespace ExcelWinForm.Excel
             {
                 excel.Quit();
             }
-            // unocmment if you want to open excel after executing write
-            //Process.Start(filePathEdited);
         }
     }
 }
